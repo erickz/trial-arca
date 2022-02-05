@@ -31,11 +31,11 @@ class CompanyRepository implements CompanyRepositoryInterface
     /**
      * Retrieve the total number of records of a search 
      * @param String @term 
-     * @return LengthAwarePaginator
+     * @return int
      */
-    public function getTotalSearch($term = ''): LengthAwarePaginator
+    public function getTotalSearch($term = ''): int
     {
-        return $this->model->where('name', 'like', '%'. $term .'%')->paginate($this->rowsPerPage);
+        return $this->model->where('name', 'like', '%'. $term .'%')->get()->count();
     }
 
     /**
@@ -46,6 +46,16 @@ class CompanyRepository implements CompanyRepositoryInterface
     public function search($term = ''): LengthAwarePaginator
     {
         return $this->model->where('name', 'like', '%'. $term .'%')->paginate($this->rowsPerPage);
+    }
+
+    /**
+     * 
+     * @param String @term 
+     * @return Company
+     */
+    public function searchBySlug($slug = ''): Company
+    {
+        return $this->model->where('slug', $slug)->first();
     }
 
     public function paginate(Array $filters = []): LengthAwarePaginator

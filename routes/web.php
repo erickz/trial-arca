@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('', [App\Http\Controllers\CompanyController::class, 'index'])->name('companies.index');
+Route::get('/{companyName}', [App\Http\Controllers\CompanyController::class, 'details'])->name('companies.details');

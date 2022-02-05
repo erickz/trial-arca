@@ -32,4 +32,9 @@ class Category extends Model
     protected $casts = [
         
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

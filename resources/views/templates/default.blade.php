@@ -9,6 +9,9 @@
     <body>
         <div class="container">
             <div class="row">
+                &nbsp;
+                <h2 class='text-center mb-5'>Business finder</h2>
+
                 @yield('content')
             </div>
         </div>

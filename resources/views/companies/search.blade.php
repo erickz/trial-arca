@@ -3,10 +3,7 @@
 @section('titlePage', 'Find your business here')
 
 @section('content')
-    <div class="row">
-        &nbsp;
-        <h1 class='text-center'>Business finder</h1>
-
+    <div class="row searchCompaniesView">
         <div class='row justify-content-md-center'>
             <form action="{{ route('companies.index') }}" method="GET" class="col-6">
                 
@@ -29,13 +26,13 @@
         @if($companies)
             <div class="col-6">
                 &nbsp;
-                <h3 class="mb-5">{{ $companies->count() }} results for: "{{ $termSearched }}"</h2>
+                <h4 class="mb-5">{{ $totalSearch }} results for: "{{ $termSearched }}"</h2>
                 
                 @foreach($companies as $company)
                     <div class="row mt-3 mb-3">
                         <div class="col-6 offset-md-1">
-                            <h4>{{ $company->name }}</h4>
-                            <h6>in {{ $company->city }} -  {{ $company->state }}</h6>
+                            <h5><a href="{{ route('companies.details', [$company->getSlug()]) }}">{{ $company->name }}</a></h4>
+                            <span>in {{ $company->city }} -  {{ $company->state }}</span>
                             <div class="">
 
                             </div>

@@ -41,6 +41,24 @@ class CompanyController extends BaseController
             $data['totalSearch'] = $this->repo->getTotalSearch($termSearched);
         }
 
-        return view('companies-search')->with($data);
+        return view('companies.search')->with($data);
+    }
+
+
+    /**
+     * Retrieve the view with the company`s details
+     * @return bool|\Illuminate\Auth\Access\Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function details($companyName)
+    {
+        $data = [
+            'company'    => null
+        ];
+        
+        if (! empty($companyName)){
+            $data['company'] = $this->repo->searchBySlug($companyName);
+        }
+
+        return view('companies.details')->with($data);
     }
 }

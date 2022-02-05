@@ -26,9 +26,9 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'telephone' => $this->faker->numerify('(##) #####-####'),
+            'phone' => $this->faker->numerify('(##) #####-####'),
             'address' => $this->faker->address(),
-            'zipcode' => $this->faker->numerify('########'),
+            'zipcode' => $this->faker->numerify('#####-###'),
             'city' => $this->faker->city(),
             //Pick a state from the constant
             'state' => $this->getStateByIndex(rand(0,26)),

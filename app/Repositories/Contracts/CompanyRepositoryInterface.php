@@ -7,6 +7,7 @@ interface CompanyRepositoryInterface
     public function get();
     public function getTotalSearch($term);
     public function search($term);
+    public function searchBySlug($term);
     public function paginate();
     public function find($id);
     public function store($data);
