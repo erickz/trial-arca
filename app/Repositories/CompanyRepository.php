@@ -51,11 +51,11 @@ class CompanyRepository implements CompanyRepositoryInterface
     /**
      * 
      * @param String @term 
-     * @return Company
+     * @return Model
      */
-    public function searchBySlug($slug = ''): Company
+    public function searchBySlug($slug = ''): Model
     {
-        return $this->model->where('slug', $slug)->first();
+        return $this->model->firstWhere('slug', $slug);
     }
 
     public function paginate(Array $filters = []): LengthAwarePaginator
