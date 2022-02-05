@@ -22,10 +22,10 @@ class CreateCategoriesAndCompaniesTable extends Migration
 
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->index();
+            $table->string('name')->index();
             $table->string('telephone', 16)->index();
-            $table->string('address');
-            $table->integer('zipcode');
+            $table->string('address')->index();
+            $table->integer('zipcode')->index();
             $table->string('city')->index();
             $table->char('state', 2)->index();
             $table->text('description');

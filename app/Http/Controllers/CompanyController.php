@@ -28,7 +28,7 @@ class CompanyController extends BaseController
     public function index()
     {
         $data = [
-            
+            'companies' => []
         ];
 
         return view('companies-search')->with($data);
