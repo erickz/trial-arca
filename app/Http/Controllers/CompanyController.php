@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\BaseController;
+use App\Repositories\Contracts\CompanyRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
 use Validator;
@@ -16,20 +17,29 @@ class CompanyController extends BaseController
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CompanyRepositoryInterface $companyRepository)
     {
-        
+        $this->repo = $companyRepository;        
     }
 
     /**
      * Retrieve the view with the form to find the company
      * @return bool|\Illuminate\Auth\Access\Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        $termSearched = $request->input('q');
+
         $data = [
-            'companies' => []
+            'companies'    => [],
+            'termSearched' => $termSearched,
+            'totalSearch'  => 0
         ];
+        
+        if ($request->has('q') && !empty($termSearched)){
+            $data['companies'] = $this->repo->search($termSearched);
+            $data['totalSearch'] = $this->repo->getTotalSearch($termSearched);
+        }
 
         return view('companies-search')->with($data);
     }
