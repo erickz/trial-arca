@@ -1,5 +1,7 @@
-@if (session()->has('type') && session()->has('message'))
-    <div class="alert alert-{{ session()->get('type') == 'error' ? 'danger' : 'success' }}">
-        {!! session()->get('message') !!}
-    </div>          
+@if ($errors->has('email') || $errors->has('password') || $errors->has('authentication'))
+    <div class="alert alert-warning">
+        {!! $errors->has('email') ? $errors->first('email') . "<br />" : ''  !!}
+        {!! $errors->has('password') ? $errors->first('password') . "<br />" : ''  !!}
+        {!! $errors->has('authentication') ? $errors->first('authentication') : ''  !!}
+    </div>
 @endif

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CategoriesSeederTable::class);
         $this->call(CompaniesSeederTable::class);
+        $this->call(UsersSeederTable::class);
         //TODO: Seeder to link categories and companies
     }
 }

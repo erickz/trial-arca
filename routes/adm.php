@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function(){
-    // Route::get('', [App\Http\Controllers\CompanyController::class, 'index'])->name('companies.index');
+Route::middleware('auth')->prefix('adm')->group(function(){
+    Route::get('companies', [App\Http\Controllers\Adm\CompanyController::class, 'index'])->name('adm.companies.index');
     // Route::get('/{companyName}', [App\Http\Controllers\CompanyController::class, 'details'])->name('companies.details');
 });

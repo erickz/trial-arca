@@ -31,12 +31,28 @@ class LoginController extends BaseController
     /**
      * 
      */
-    public function doLogin()
+    public function doLogin(Request $request)
     {
-        $data = [
-            
-        ];
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        return view('login')->with($data);
+        //Attempt to login
+        if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('adm.companies.index');
+        }
+
+        return back()->withInput($request->except("password"))->withErrors(['authentication' => 'Your email or password are wrong, please try again.']);
+    }
+
+    /**
+     * 
+     */
+    public function doLogout(Request $request)
+    {
+        auth()->logout();
+
+        return redirect(route('login.index'));
     }
 }
