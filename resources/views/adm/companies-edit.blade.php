@@ -31,8 +31,8 @@
 
                 <div class="col-md-6 form-group mt-2">
                     <label for="validationServerUsername" class="form-label">Categories</label>
-                    <div class="input-group has-validation">
-                        <select id="slCategories" name='categories[]' class='form-select form-control]' multiple placeholder='Select the categories'>
+                    <div class="input-group has-validation {{ $errors->has('categories') ? 'is-invalid' : '' }}">
+                        <select id="slCategories" name='categories[]' class='form-select form-control {{ $errors->has('categories') ? 'is-invalid' : '' }}' multiple placeholder='Select the categories'>
                             @foreach( $categories as $category )
                                 <option value='{{ $category->id }}' {{ $company->categories->contains($category->id) ? 'selected="selected"' : '' }} >{{ $category->name }}</option>
                             @endforeach
@@ -40,7 +40,7 @@
 
                         @if($errors->has('categories'))
                             <div class="invalid-feedback">
-                                {{ $errors->first("state") }}
+                                {{ $errors->first("categories") }}
                             </div>
                         @endif
                     </div>
@@ -101,7 +101,7 @@
                 <div class="col-md-2 form-group mt-2">
                     <label for="validationServerUsername" class="form-label">State</label>
                     <div class="input-group has-validation">
-                        <select name='state' class='form-select form-control'>
+                        <select name='state' class='form-select form-control {{ $errors->has('state') ? 'is-invalid' : '' }}'>
                             <option value='n'>Select a State</option>
                             @foreach( config()->get('constants.states') as $state )
                                 <option value='{{ $state }}'  {{ $company->state == $state ? 'selected="selected"' : '' }} >{{ strtoupper($state) }}</option>

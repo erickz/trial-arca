@@ -25,6 +25,7 @@ class StoreUpdateCompanyRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'categories' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'zipcode' => 'required',

@@ -28,8 +28,8 @@
 
                 <div class="col-md-6 form-group mt-2">
                     <label for="validationServerUsername" class="form-label">Categories</label>
-                    <div class="input-group has-validation">
-                        <select id="slCategories" name='categories[]' class='form-select form-control' multiple placeholder='Select the categories'>
+                    <div class="input-group has-validation {{ $errors->has('categories') ? 'is-invalid' : '' }}">
+                        <select id="slCategories" name='categories[]' class='form-select form-control {{ $errors->has('categories') ? 'is-invalid' : '' }}' multiple placeholder='Select the categories'>
                             @foreach( $categories as $category )
                                 <option value='{{ $category->id }}' {{ old('categories') && is_array(old('categories')) ? (in_array($category->id, old('categories')) ? 'selected="selected"' : '') : '' }} >{{ $category->name }}</option>
                             @endforeach
@@ -37,7 +37,7 @@
 
                         @if($errors->has('categories'))
                             <div class="invalid-feedback">
-                                {{ $errors->first("state") }}
+                                {{ $errors->first("categories") }}
                             </div>
                         @endif
                     </div>

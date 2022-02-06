@@ -13,6 +13,11 @@ style.innerHTML = `
   background-position: right .75rem center;
   background-size: 16px 12px;
 }
+
+.is-invalid .multiselect-dropdown{ 
+  border: 1px solid red;
+}
+
 .multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder{
   margin-right:0.5em; 
   margin-bottom:3px;
