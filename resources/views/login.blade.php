@@ -3,14 +3,20 @@
 @section('titlePage', 'Login to access the administration panel')
 
 @section('content')
-    <div class="row loginView">
+    <div class="row">
         <div class='row justify-content-md-center'>
             <form action="{{ route('login.doLogin') }}" method="POST" class="col-5">
                 @csrf
 
                 <h4 class="text-center mb-3">Please login to access the administration panel</h4>
                 
-                @include('elements.alert')
+                @if ($errors->has('email') || $errors->has('password') || $errors->has('authentication'))
+                    <div class="alert alert-warning">
+                        {!! $errors->has('email') ? $errors->first('email') . "<br />" : ''  !!}
+                        {!! $errors->has('password') ? $errors->first('password') . "<br />" : ''  !!}
+                        {!! $errors->has('authentication') ? $errors->first('authentication') : ''  !!}
+                    </div>
+                @endif
 
                 <div class="mb-3 mt-5">
                     <label for="exampleFormControlInput1" class="form-label"><b>Email:</b></label>

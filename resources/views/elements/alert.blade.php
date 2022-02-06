@@ -1,7 +1,5 @@
-@if ($errors->has('email') || $errors->has('password') || $errors->has('authentication'))
-    <div class="alert alert-warning">
-        {!! $errors->has('email') ? $errors->first('email') . "<br />" : ''  !!}
-        {!! $errors->has('password') ? $errors->first('password') . "<br />" : ''  !!}
-        {!! $errors->has('authentication') ? $errors->first('authentication') : ''  !!}
+@if (session()->has('message'))
+    <div class="alert alert-{{ session()->has('type') ? session()->get('type') : 'warning' }}">
+        {!! session()->has('message') ? session()->get('message') : ''  !!}
     </div>
 @endif

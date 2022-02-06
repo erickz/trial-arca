@@ -13,5 +13,6 @@ const mix = require('laravel-mix');
 
 mix
     .copy('resources/js/bootstrap.js', 'public/assets/js/bootstrap.js')
+    .copy('resources/js/cleave.min.js', 'public/assets/js/cleave.min.js')
     .copy('resources/css/bootstrap.css', 'public/assets/css/bootstrap.css')
 

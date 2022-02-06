@@ -29,13 +29,19 @@ class CompanyRepository implements CompanyRepositoryInterface
     }
 
     /**
-     * Retrieve the total number of records of a search 
+     * Retrieve the total number of records. It can filter by term.
      * @param String @term 
      * @return int
      */
-    public function getTotalSearch($term = ''): int
+    public function getTotal($term = null): int
     {
-        return $this->model->where('name', 'like', '%'. $term .'%')->get()->count();
+        $model = $this->model;
+
+        if ($term){
+            $model = $model->where('name', 'like', '%'. $term .'%');
+        }
+
+        return $model->get()->count();
     }
 
     /**
@@ -53,7 +59,7 @@ class CompanyRepository implements CompanyRepositoryInterface
      * @param String @term 
      * @return Model
      */
-    public function searchBySlug($slug = ''): Model
+    public function searchBySlug($slug = ''): Company
     {
         return $this->model->firstWhere('slug', $slug);
     }
@@ -63,12 +69,12 @@ class CompanyRepository implements CompanyRepositoryInterface
         return $this->model->paginate($this->rowsPerPage);
     }
 
-    public function find($id = 0): Model
+    public function find($id = 0): Company
     {
         return $this->model->find($id);
     }
 
-    public function store($data = []): Model
+    public function store($data = []): Company
     {
         $row = $this->model->create($data);
 

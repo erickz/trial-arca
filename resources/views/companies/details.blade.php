@@ -3,7 +3,7 @@
 @section('titlePage', 'Find your business here')
 
 @section('content')
-    <div class="row companiesDetailsView">
+    <div class="row">
         <h1>{{ $company->name }}</h1>
         <span>in {{ $company->city }} -  {{ $company->state }}</span>
         

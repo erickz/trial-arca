@@ -38,7 +38,7 @@ class CompanyController extends BaseController
         
         if ($request->has('q') && !empty($termSearched)){
             $data['companies'] = $this->repo->search($termSearched);
-            $data['totalSearch'] = $this->repo->getTotalSearch($termSearched);
+            $data['totalSearch'] = $this->repo->getTotal($termSearched);
         }
 
         return view('companies.search')->with($data);

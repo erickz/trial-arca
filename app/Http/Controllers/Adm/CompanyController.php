@@ -6,6 +6,8 @@ use App\Http\Controllers\BaseController;
 use App\Repositories\Contracts\CompanyRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUpdateCompanyRequest;
+
 use Validator;
 
 class CompanyController extends BaseController
@@ -28,6 +30,56 @@ class CompanyController extends BaseController
      */
     public function index(Request $request)
     {
-        dd("Ae");
+        $termSearched = $request->input('q');
+
+        $data = [
+            'companies'    => $this->repo->paginate(),
+            'total'        => $this->repo->getTotal()
+        ];
+
+        return view('adm.companies-index')->with($data);
+    }
+
+    public function create()
+    {
+        return view('adm.companies-create');
+    }
+
+    public function store(StoreUpdateCompanyRequest $request)
+    {
+        $company = $this->repo->store($request->except('csrf'));
+
+        return redirect()->route('adm.companies.edit', [$company->id]);
+    }
+
+    public function edit($id)
+    {
+        $company = $this->repo->find($id);
+
+        return view('adm.companies-edit')->with(['company' => $company]);
+    }
+
+    public function update(StoreUpdateCompanyRequest $request, $id)
+    {
+        if (! $request->validated()){
+            return back()->withErrors();
+        }
+
+        $company = $this->repo->update($id, $request->all());
+
+        return redirect()->route('adm.companies.edit', [$id]);
+    }
+
+    public function delete($id)
+    {
+        if ($id){
+            $deleted = $this->repo->delete([$id]);
+
+            if (! $deleted){
+                return redirect()->route('adm.companies.index')->with(['message' => 'Coudn`t delete the record', 'type' => 'danger']);
+            }
+        }
+
+        return redirect()->route('adm.companies.index')->with(['message' => 'Record deleted with success', 'type' => 'success']);
     }
 }

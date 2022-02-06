@@ -3,7 +3,7 @@
 @section('titlePage', 'Find your business here')
 
 @section('content')
-    <div class="row searchCompaniesView">
+    <div class="row">
         <div class='row justify-content-md-center'>
             <form action="{{ route('companies.index') }}" method="GET" class="col-6">
                 

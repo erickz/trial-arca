@@ -5,7 +5,7 @@ namespace App\Repositories\Contracts;
 interface CompanyRepositoryInterface
 {
     public function get();
-    public function getTotalSearch($term);
+    public function getTotal($term);
     public function search($term);
     public function searchBySlug($term);
     public function paginate();
