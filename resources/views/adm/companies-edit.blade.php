@@ -49,7 +49,7 @@
                 <div class="col-md-4 form-group mt-2">
                     <label for="validationServerUsername" class="form-label">Phone</label>
                     <div class="input-group has-validation">
-                        <input type="text" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" name="phone" maxlength="16" value="{{ old('phone') ? old('phone') : $company->phone }}" required>
+                        <input type="text" mask="(99) 9999–9999" class="maskField form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" name="phone" maxlength="16" value="{{ old('phone') ? old('phone') : $company->phone }}" required>
 
                         @if($errors->has('phone'))
                             <div class="invalid-feedback">

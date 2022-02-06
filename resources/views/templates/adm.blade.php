@@ -17,7 +17,6 @@
         </div>
 
         <script src="{{ asset('assets/js/bootstrap.js') }}" type="text/javascript"></script>
-        <!-- <script src="{{ asset('assets/js/cleave.min.js') }}" type="text/javascript"></script> -->
         <script src="{{ asset('assets/js/multiselect-dropdown.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/adm.js') }}" type="text/javascript"></script>
     </body>

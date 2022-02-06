@@ -1,3 +1,3 @@
-var adm = function(){
-    
+let adm = function(){
+        
 }();
