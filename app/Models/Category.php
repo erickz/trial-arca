@@ -33,8 +33,8 @@ class Category extends Model
         
     ];
 
-    public function categories()
+    public function companies()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Company::class);
     }
 }

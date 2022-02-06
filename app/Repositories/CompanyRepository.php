@@ -78,6 +78,13 @@ class CompanyRepository implements CompanyRepositoryInterface
     {
         $row = $this->model->create($data);
 
+        if( isset($data['categories']) ){
+            $row->categories()->sync($data['categories']);
+        }
+        else {
+            $row->categories()->sync([]);
+        }
+
         return $row;
     }
 
@@ -90,6 +97,13 @@ class CompanyRepository implements CompanyRepositoryInterface
         }
 
         $updated = $row->update($data);
+
+        if( isset($data['categories']) ){
+            $row->categories()->sync($data['categories']);
+        }
+        else {
+            $row->categories()->sync([]);
+        }
 
         return $updated;
     }

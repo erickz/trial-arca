@@ -29,6 +29,23 @@
                     </div>
                 </div>
 
+                <div class="col-md-6 form-group mt-2">
+                    <label for="validationServerUsername" class="form-label">Categories</label>
+                    <div class="input-group has-validation">
+                        <select id="slCategories" name='categories[]' class='form-select form-control]' multiple placeholder='Select the categories'>
+                            @foreach( $categories as $category )
+                                <option value='{{ $category->id }}' {{ $company->categories->contains($category->id) ? 'selected="selected"' : '' }} >{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @if($errors->has('categories'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first("state") }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="col-md-4 form-group mt-2">
                     <label for="validationServerUsername" class="form-label">Phone</label>
                     <div class="input-group has-validation">
@@ -81,12 +98,11 @@
                     </div>
                 </div>
 
-
                 <div class="col-md-2 form-group mt-2">
                     <label for="validationServerUsername" class="form-label">State</label>
                     <div class="input-group has-validation">
                         <select name='state' class='form-select form-control'>
-                            <option value=''>Select a State</option>
+                            <option value='n'>Select a State</option>
                             @foreach( config()->get('constants.states') as $state )
                                 <option value='{{ $state }}'  {{ $company->state == $state ? 'selected="selected"' : '' }} >{{ strtoupper($state) }}</option>
                             @endforeach

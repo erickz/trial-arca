@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Repositories\Contracts\CompanyRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Http\Requests\StoreUpdateCompanyRequest;
 
 use Validator;
@@ -42,21 +43,21 @@ class CompanyController extends BaseController
 
     public function create()
     {
-        return view('adm.companies-create');
+        return view('adm.companies-create')->with(['categories' => Category::get()]);
     }
 
     public function store(StoreUpdateCompanyRequest $request)
     {
         $company = $this->repo->store($request->except('csrf'));
 
-        return redirect()->route('adm.companies.edit', [$company->id]);
+        return redirect()->route('adm.companies.edit', [$company->id])->with(['message' => 'New company stored with success!', 'type' => 'success']);
     }
 
     public function edit($id)
     {
         $company = $this->repo->find($id);
 
-        return view('adm.companies-edit')->with(['company' => $company]);
+        return view('adm.companies-edit')->with(['company' => $company, 'categories' => Category::get()]);
     }
 
     public function update(StoreUpdateCompanyRequest $request, $id)
@@ -67,7 +68,7 @@ class CompanyController extends BaseController
 
         $company = $this->repo->update($id, $request->all());
 
-        return redirect()->route('adm.companies.edit', [$id]);
+        return redirect()->route('adm.companies.edit', [$id])->with(['message' => 'Company updated with success!', 'type' => 'success']);
     }
 
     public function delete($id)

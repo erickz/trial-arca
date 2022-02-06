@@ -16,10 +16,7 @@
                     <div class="row mt-3 mb-3">
                         <div class="col-6">
                             <h5><a href="{{ route('adm.companies.edit', [$company->id]) }}">{{ $company->name }}</a></h4>
-                            <span>in {{ $company->city }} -  {{ $company->state }}</span>
-                            <div class="">
-
-                            </div>
+                            <span>in {{ $company->listCategories() }} </span>
                         </div>
                     </div>
                 @endforeach

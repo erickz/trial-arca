@@ -25,11 +25,11 @@ class StoreUpdateCompanyRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'required|digits:16',
+            'phone' => 'required',
             'address' => 'required',
-            'zipcode' => 'required|digits:10',
+            'zipcode' => 'required',
             'city' => 'required',
-            'state' => 'required|size:2',
+            'state' => 'required|not_in:n|size:2',
             'description' => 'required',
         ];
     }
