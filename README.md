@@ -1,4 +1,4 @@
-Made with Laravel 8, PHP 8.0 and MYSQL 5.7
+Project made with Laravel 8, PHP 8.0 and MYSQL 5.7
 
 # Installation
 ## Dependencies
