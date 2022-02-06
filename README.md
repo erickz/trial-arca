@@ -10,8 +10,6 @@ Project made with Laravel 8, PHP 8.0 and MYSQL 5.7
 ## Seeders
 ```php artisan db:seed```
 
-code.jquery.com/jquery-compat-git.js'>
-
 # Usage
 ## Set up assets 
 ```npm run dev```
