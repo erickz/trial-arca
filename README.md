@@ -23,7 +23,7 @@ code.jquery.com/jquery-compat-git.js'>
 - Create an index for Elasticsearch called `companies` (if It doesn't exist already) with the following command: `curl PUT http://localhost:9200/companies`;
 - Run `php artisan search:reindex-elastic` to create the indexes from the database;
 
-# Improvements
+# Future Improvements
 - Make the updates of indexes with queues in order to improve the implementation of Elasticsearch;
 - Add masks to the inputs;
 - Create automated tests to the application;
