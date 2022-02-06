@@ -10,6 +10,12 @@ Project made with Laravel 8, PHP 8.0 and MYSQL 5.7
 ## Seeders
 ```php artisan db:seed```
 
+**Example user to login**
+```
+    email: user@test.com
+    pass: usertest@123
+``` 
+
 # Usage
 ## Set up assets 
 ```npm run dev```
