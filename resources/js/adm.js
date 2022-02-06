@@ -1,0 +1,3 @@
+let adm = function(){
+        
+}();

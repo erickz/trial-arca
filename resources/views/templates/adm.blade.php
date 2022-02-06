@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Arca Trial - @yield('titlePage')</title>
+        <title>Business Finder - Administration Panel - @yield('titlePage')</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" />
         <link href="{{ asset('assets/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
@@ -10,12 +10,14 @@
         <div class="container">
             <div class="row">
                 &nbsp;
-                <h2 class='text-center mb-5'>Business Finder</h2>
+                <h2 class='text-center mb-5'><i class="fas fa-locked"></i> Business Finder - Administration Panel</h2>
 
                 @yield('content')
             </div>
         </div>
 
         <script src="{{ asset('assets/js/bootstrap.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/multiselect-dropdown.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/adm.js') }}" type="text/javascript"></script>
     </body>
 </html>

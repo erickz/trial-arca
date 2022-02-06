@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(CategoriesSeederTable::class);
+        $this->call(CompaniesSeederTable::class);
+        $this->call(UserToLoginSeederTable::class);
+        //TODO: Seeder to link categories and companies
     }
 }

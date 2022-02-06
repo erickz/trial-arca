@@ -1,5 +1,6 @@
 {
+    "/assets/js/adm.js": "/assets/js/adm.js",
     "/assets/js/bootstrap.js": "/assets/js/bootstrap.js",
-    "/assets/js/handlesnsfw.js": "/assets/js/handlesnsfw.js",
+    "/assets/js/multiselect-dropdown.js": "/assets/js/multiselect-dropdown.js",
     "/assets/css/bootstrap.css": "/assets/css/bootstrap.css"
 }
