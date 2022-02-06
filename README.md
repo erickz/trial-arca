@@ -23,4 +23,5 @@ Made with Laravel 8, PHP 8.0 and MYSQL 5.7
 
 # Improvements
 - Make the updates of indexes with queues in order to improve the implementation of Elasticsearch;
-- 
+- Add masks to the inputs;
+- Create automated tests to the application;
