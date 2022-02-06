@@ -10,8 +10,9 @@ use App\Models\Company;
 
 class CompanyRepository implements CompanyRepositoryInterface
 {
-    private $model;
-    private $rowsPerPage = 10;
+    protected $model;
+    protected $totalResults = null;
+    protected $rowsPerPage = 10;
 
     public function __construct(Company $model)
     {
@@ -35,23 +36,27 @@ class CompanyRepository implements CompanyRepositoryInterface
      */
     public function getTotal($term = null): int
     {
-        $model = $this->model;
+        if ($this->totalResults === NULL){
+            $model = $this->model;
 
-        if ($term){
-            $model = $model->where('name', 'like', '%'. $term .'%');
+            if ($term){
+                $model = $model->where('name', 'like', '%'. $term .'%');
+            }
+
+            $this->totalResults = $model->get()->count();
         }
-
-        return $model->get()->count();
+        
+        return $this->totalResults;
     }
 
     /**
      * 
-     * @param String @term 
+     * @param String @query 
      * @return LengthAwarePaginator
      */
-    public function search($term = ''): LengthAwarePaginator
+    public function search($query = ''): LengthAwarePaginator
     {
-        return $this->model->where('name', 'like', '%'. $term .'%')->paginate($this->rowsPerPage);
+        return $this->model->where('name', 'like', '%'. $query .'%')->paginate($this->rowsPerPage);
     }
 
     /**
@@ -78,12 +83,7 @@ class CompanyRepository implements CompanyRepositoryInterface
     {
         $row = $this->model->create($data);
 
-        if( isset($data['categories']) ){
-            $row->categories()->sync($data['categories']);
-        }
-        else {
-            $row->categories()->sync([]);
-        }
+        $this->syncCategories($row, $data['categories']);
 
         return $row;
     }
@@ -98,14 +98,18 @@ class CompanyRepository implements CompanyRepositoryInterface
 
         $updated = $row->update($data);
 
-        if( isset($data['categories']) ){
-            $row->categories()->sync($data['categories']);
-        }
-        else {
-            $row->categories()->sync([]);
-        }
+        $this->syncCategories($row, $data['categories']);
 
         return $updated;
+    }
+
+    public function syncCategories($row = null, $categories = null): Array
+    {
+        if( isset($categories) ){
+            return $row->categories()->sync($categories);
+        }
+
+        return $row->categories()->sync([]);
     }
 
     public function delete($ids): Bool

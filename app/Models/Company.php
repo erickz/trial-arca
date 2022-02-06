@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Traits\CompanyTrait;
+use App\Models\Traits\SearchableTrait;
 
 use Illuminate\Support\Str;
 
 class Company extends Model
 {
-    use HasFactory, CompanyTrait;
+    use HasFactory, CompanyTrait, SearchableTrait;
     
     /**
      * The attributes that are mass assignable.
