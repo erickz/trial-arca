@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class='row justify-content-md-center'>
-            <form action="{{ route('companies.index') }}" method="GET" class="col-6">
+            <form action="{{ route('companies.index') }}" method="GET" class="col-12">
                 
                 @if (request()->has('q') && empty(request()->input('q')))
                     <div class="alert alert-warning }}">

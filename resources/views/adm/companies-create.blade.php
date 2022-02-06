@@ -10,7 +10,7 @@
         </div>
         
         <div class='row'>
-            <form action="{{ route('adm.companies.store') }}" method="POST" class="col-9">
+            <form action="{{ route('adm.companies.store') }}" method="POST" class="col-12">
                 @csrf
 
                 <div class="col-md-6 form-group mt-2">

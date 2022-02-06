@@ -10,7 +10,7 @@
         </div>
                 
         <div class='row'>
-            <form action="{{ route('adm.companies.update', $company->id) }}" method="POST" class="col-9">
+            <form action="{{ route('adm.companies.update', $company->id) }}" method="POST" class="col-12">
                 @method('put')
                 @csrf
 

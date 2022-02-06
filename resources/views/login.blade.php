@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class='row justify-content-md-center'>
-            <form action="{{ route('login.doLogin') }}" method="POST" class="col-5">
+            <form action="{{ route('login.doLogin') }}" method="POST" class="col-12">
                 @csrf
 
                 <h4 class="text-center mb-3">Please login to access the administration panel</h4>
